@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+h1{
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+}
+.naast{
+    display: flex;
+    flex-direction: row;
+}
+.onder{
+ display: flex;
+ flex-direction: column;
+}
+.header{
+    display: flex;
+    height: 150px;
+    width: 100%;
+    background-color: #1D1919;
+    align-items: center;
+}
+.logo-header{
+    margin-top: 10px;
+    margin-left: 50px;
+    height: 130px;
+    width: 130px;
+}
+.knop-box{
+    display: flex;
+    height: 7vw;
+    width: 15vw;
+    background-color: #2C2C2C;
+    border-radius: 25px;
+    margin: 25px;
+    margin-left: 50px;
+    color: #FFF;
+    align-items: center;
+    justify-content: center;
+}
+.grote-foto-sushi{
+    height: 100%;
+    width: 100%;
+}
