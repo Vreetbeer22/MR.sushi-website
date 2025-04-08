@@ -11,6 +11,19 @@ h1{
     font-style: normal;
     font-size: 50px;
 }
+h2{
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 35px; 
+}
+h3{
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+}
+/* terugkomende stukjes */
 .naast{
     display: flex;
     flex-direction: row;
@@ -19,6 +32,15 @@ h1{
  display: flex;
  flex-direction: column;
 }
+.tekst-zwart{
+    color: #000;
+}
+.tekst-wit{
+    color: #FFF;
+}
+/**/
+
+/* header */
 .header{
     display: flex;
     height: 150px;
@@ -29,6 +51,7 @@ h1{
 .logo-header{
     margin-top: 10px;
     margin-left: 50px;
+    margin-right: 50px;
     height: 130px;
     width: 130px;
 }
@@ -44,7 +67,89 @@ h1{
     align-items: center;
     justify-content: center;
 }
+/**/
+
 .grote-foto-sushi{
     height: 100%;
     width: 100%;
 }
+.blok-welkom{
+    width: 100%;
+    height: 750px;
+    background-color: #B6B6B6;
+}
+
+/* login */
+.login-balk{
+    height: 100px;
+    width: 100%;
+    background-color: #1D1919;
+}
+.login-knop{
+    display: flex;
+    height: 5vw;
+    width: 10vw;
+    background-color: #2C2C2C;
+    border-radius: 25px;
+    color: #FFF;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+.close:hover { color: red; }
+/**/
+
+/* footer */
+.footer-blok{
+    height: 450px;
+    width: 100%;
+    background-color: #2C2C2C;
+    padding: 25px;
+}
+.logo-footer{
+    height: 150px;
+    width: 150px;
+}  
+.ruimte-tussen-footer{
+    width: 35px;
+}
+.line-height-footer{
+    line-height: 50px;
+}
+.footer-ruimte-tussen{
+    height: 50px;
+}
+.footer-inhoud{
+    margin: auto;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;  
+}
+.pijltje-footer{
+    height: 100px;
+    width: 100px;
+}
+/**/
