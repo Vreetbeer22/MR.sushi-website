@@ -11,8 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
         rel="stylesheet">
 </head>
-
-<body>
+    <?php
+        include("connect.php");
+    ?>
     <nav>
         <div class="header">
             <div class="naast">
@@ -61,14 +62,27 @@
                 </div>
             </div>
         </div>
-    </main>
-    <?php
-            include("connect.php");
-
-            $sql = "SELECT * FROM Menukaart"; 
-            $result = mysqli_query($conn, $sql);
-    
+        <h1>Menu</h1>
+        <?php
+ 
+            require_once 'connect.php';
+ 
+            $db = new db();
+ 
+            $sql = "SELECT * FROM `Menukaart`;";
+            $result = $db->get_connection()->query($sql);
+ 
+            foreach ($result as $row) {
+ 
+ 
+                $template = '
+                        <p class="menu-item">%s - %s, %s - €%s</p>
+                    ';
+ 
+                echo sprintf($template, $row["id"], $row["naam"], $row["omschrijving"], $row["prijs"]);
+            }
         ?>
+    </main>
     <script src="js/script.js"></script>
 </body>
 

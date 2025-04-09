@@ -43,14 +43,38 @@
         <div class="onder">
             <img src="images/foto-sushi-groot.png" class="grote-foto-sushi" alt="Achtergrond foto sushi">
             <div class="blok-welkom">
-                <div class="naast">
+                <div class="ruimte-welkom naast">
                     <div class="onder">
-
+                        <h4>Welkom!</h4>
+                        <h2>Bij MR Sushi</h2>
+                        <h3>Bij MR Sushi draait alles om de perfecte</h3>
+                        <h3>combinatie van verse ingrediënten,</h3>
+                        <h3>traditionele Japanse smaken en een moderne</h3>
+                        <h3>twist. Of je nu kiest voor onze klassieke </h3>
+                        <h3>nigiri, smaakvolle maki of verrassende</h3>
+                        <h3>special rolls, elk stukje sushi wordt met</h3>
+                        <h3>passie en precisie bereid.</h3>
+                        <h3>Kom langs en geniet van een culinaire</h3>
+                        <h3>ervaring in een sfeervolle omgeving, of </h3>
+                        <h3>bestel eenvoudig online en laat de heerlijke</h3>
+                        <h3>smaken van Japan bij jou thuis bezorgen.</h3>
                     </div>
+                    <img src="images/foto-sushi-welkom.png" class="foto-welkom" alt="foto sushi">
                 </div>
-            </div>
-        </div>
+            </div>  <!-- eind blok welkom -->
+            <div class="blok-bestellen">
+                <div class="ruimte-bestellen naast">
+                    <h4>Bestellen?</h4>
+                    <a href="order.php">
+                        <div class="knop-naar-bestellen">
+                            <h2>Klik hier!</h2>
+                        </div>
+                    </a>
+                </div>
+            </div>  <!-- eind blok bestellen -->
+        </div>  <!-- eind blok onder van main -->
     </main>
+
     <footer>
         <div class="footer-blok tekst-wit">
             <div class="naast footer-inhoud">
