@@ -1,9 +1,19 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['ingelogt']) || $_SESSION['ingelogt'] !== true) {
+    header("Location: login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <nav>
@@ -33,5 +43,13 @@
             </div>
         </div> 
     </nav>
+    <main>
+        <div class="login-balk">
+            <a href="loguit.php" class="login-knop">
+                <h3>Uitloggen</h3>
+            </a>
+        </div>
+    </main>
+    <h1>Welkom, <?php echo htmlspecialchars($_SESSION['naam']); ?>!</h1>
 </body>
 </html>

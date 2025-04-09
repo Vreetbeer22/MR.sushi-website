@@ -26,29 +26,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $passInput = trim($_POST['password'] ?? '');
  
     if (!empty($userInput) && !empty($passInput)) {
-        if ($userInput === "admin" && $passInput === "wachtwoord123") {
-            $_SESSION['user'] = $userInput;
-            header("Location: admin.php");
-            exit;
-        }
  
         // Zoek de gebruiker in de database
-        $stmt = $pdo->prepare("SELECT * FROM gebruiker WHERE gebruikersnaam = :username");
+        $stmt = $pdo->prepare("SELECT * FROM gebruiker WHERE naam = :username AND wachtwoord = :password");
         $stmt->bindValue(':username', $userInput);
+        $stmt->bindValue(':password', $passInput);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
  
         if ($user) {
-            // Controleer of het wachtwoord correct is
-            if (password_verify($passInput, $user['password_hash'])) {
-                $_SESSION['user'] = $userInput;
-                header("Location: index.php");
-                exit;
-            }
+            $_SESSION['ingelogt'] = true;
+            $_SESSION['user'] = $user['naam'];
+            header("Location: admin.php");
+            exit;
         }
  
         // Foutmelding bij mislukte login
-        header("Location: index.php?error=1");
+        header("Location: menu.php?error=1");
         exit;
     }
 }
