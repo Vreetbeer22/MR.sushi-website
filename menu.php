@@ -52,17 +52,17 @@
                     <h2>Login</h2>
                     <form action="login.php" method="post">
                         <label for="gebruikersnaam">Gebruikersnaam:</label>
-                        <input type="text" name="gebruikersnaam" id="gebruikersnaam" required><br><br>
+                        <input type="text" name="username" id="gebruikersnaam" required><br><br>
 
                         <label for="wachtwoord">Wachtwoord:</label>
-                        <input type="password" name="wachtwoord" id="wachtwoord" required><br><br>
+                        <input type="password" name="password" id="wachtwoord" required><br><br>
 
                         <button type="submit" name="login">Inloggen</button>
                     </form>
                 </div>
             </div>
         </div>
-        <h1>Menu</h1>
+        <h1>Menu</h1>   
         <?php
  
             require_once 'connect.php';

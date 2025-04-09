@@ -13,11 +13,11 @@ try {
     die("Databaseverbinding mislukt: " . $e->getMessage() . "<br>Controleer of de database bestaat en of de gebruiker de juiste rechten heeft.");
 }
  
-$stmt = $pdo->query("SHOW TABLES LIKE 'users'");
+$stmt = $pdo->query("SHOW TABLES LIKE 'gebruiker'");
 $tableExists = $stmt->rowCount() > 0;
  
 if (!$tableExists) {
-    die("Fout: De tabel 'users' bestaat niet in de database. Zorg ervoor dat de database correct is ingesteld.");
+    die("Fout: De tabel 'gebruiker' bestaat niet in de database. Zorg ervoor dat de database correct is ingesteld.");
 }
  
 // Verwerking van de inlog
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
  
         // Zoek de gebruiker in de database
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT * FROM gebruiker WHERE gebruikersnaam = :username");
         $stmt->bindValue(':username', $userInput);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);

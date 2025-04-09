@@ -15,7 +15,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     var password = document.getElementById("password").value;
     
     if (username === "admin" && password === "admin123") {
-        window.location.href = "admin.html";
+        window.location.href = "admin.php";
     } else {
         alert("Ongeldige gebruikersnaam of wachtwoord");
     }
