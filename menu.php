@@ -1,3 +1,9 @@
+<?php
+session_start();
+include("connect.php");
+
+$is_ingelogd = $_SESSION["ingelogt"] ?? false;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,38 +17,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
         rel="stylesheet">
 </head>
-    <?php
-        include("connect.php");
-    ?>
-    <nav>
-        <div class="header">
+<nav>
+    <div class="header">
+        <div class="naast">
+            <img src="images/logo.png" class="logo-header" alt="Logo MR.suchi">
+            <a href="index.php">
+                <div class="knop-box">
+                    <h1>Home</h1>
+                </div>
+            </a>
+            <a href="menu.php">
+                <div class="knop-box">
+                    <h1>Menu</h1>
+                </div>
+            </a>
+            <a href="order.php">
+                <div class="knop-box">
+                    <h1>Order</h1>
+                </div>
+            </a>
+            <a href="contact.php">
+                <div class="knop-box">
+                    <h1>Contact</h1>
+                </div>
+            </a>
+        </div>
+    </div>
+</nav>
+<main>
+    <div class="login-balk">
+        <?php if ($is_ingelogd) { ?>
             <div class="naast">
-                <img src="images/logo.png" class="logo-header" alt="Logo MR.suchi">
-                <a href="index.php">
-                    <div class="knop-box">
-                        <h1>Home</h1>
+                <a href="loguit.php">
+                    <div class="login-knop">
+                        <h3>Uitloggen</h3>
                     </div>
                 </a>
-                <a href="menu.php">
-                    <div class="knop-box">
-                        <h1>Menu</h1>
-                    </div>
-                </a>
-                <a href="order.php">
-                    <div class="knop-box">
-                        <h1>Order</h1>
-                    </div>
-                </a>
-                <a href="contact.php">
-                    <div class="knop-box">
-                        <h1>Contact</h1>
+                <a href="admin.php">
+                    <div class="login-knop">
+                        <h3>Admin</h3>
                     </div>
                 </a>
             </div>
-        </div>
-    </nav>
-    <main>
-        <div class="login-balk">
+        <?php } else { ?>
             <div class="login-knop" id="openModal">
                 <h3>Inloggen</h3>
             </div>
@@ -61,29 +78,30 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <h1>Menu</h1>   
-        <?php
- 
-            require_once 'connect.php';
- 
-            $db = new db();
- 
-            $sql = "SELECT * FROM `Menukaart`;";
-            $result = $db->get_connection()->query($sql);
- 
-            foreach ($result as $row) {
- 
- 
-                $template = '
+        <?php } ?>
+    </div>
+    <h1>Menu</h1>
+    <?php
+
+    require_once 'connect.php';
+
+    $db = new db();
+
+    $sql = "SELECT * FROM `Menukaart`;";
+    $result = $db->get_connection()->query($sql);
+
+    foreach ($result as $row) {
+
+
+        $template = '
                         <p class="menu-item">%s - %s, %s - €%s</p>
                     ';
- 
-                echo sprintf($template, $row["id"], $row["naam"], $row["omschrijving"], $row["prijs"]);
-            }
-        ?>
-    </main>
-    <script src="js/script.js"></script>
+
+        echo sprintf($template, $row["id"], $row["naam"], $row["omschrijving"], $row["prijs"]);
+    }
+    ?>
+</main>
+<script src="js/script.js"></script>
 </body>
 
 </html>

@@ -5,8 +5,8 @@ if (!isset($_SESSION['ingelogt']) || $_SESSION['ingelogt'] !== true) {
     header("Location: login.php");
     exit();
 }
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,11 +45,13 @@ if (!isset($_SESSION['ingelogt']) || $_SESSION['ingelogt'] !== true) {
     </nav>
     <main>
         <div class="login-balk">
-            <a href="loguit.php" class="login-knop">
-                <h3>Uitloggen</h3>
+            <a href="loguit.php">
+                <div class="login-knop">
+                    <h3>Uitloggen</h3>
+                </div>
             </a>
         </div>
+        
     </main>
-    <h1>Welkom, <?php echo htmlspecialchars($_SESSION['naam']); ?>!</h1>
 </body>
 </html>
