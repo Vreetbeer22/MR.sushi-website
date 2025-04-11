@@ -150,7 +150,7 @@ h4{
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 .modal-content {
     background-color: #FFF;
@@ -158,7 +158,7 @@ h4{
     padding: 20px;
     border-radius: 8px;
     width: 300px;
-    box-shadow: 0 4px 8px #000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);  
 }
 .close {
     float: right;
@@ -219,5 +219,11 @@ h4{
 .pijltje-footer{
     height: 100px;
     width: 100px;
+}
+/**/
+
+/* admin */
+.admin-body{
+    
 }
 /**/
