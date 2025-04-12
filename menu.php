@@ -3,6 +3,9 @@ session_start();
 include("connect.php");
 
 $is_ingelogd = $_SESSION["ingelogt"] ?? false;
+
+$db = new db();
+$pdo = $db->get_connection();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,26 +83,46 @@ $is_ingelogd = $_SESSION["ingelogt"] ?? false;
             </div>
         <?php } ?>
     </div>
-    <h1>Menu</h1>
-    <?php
+    <div class="hele-kaart">
+        <div class="tekst-center">
+            <h1>Menu</h1>
+        </div>
+        <form method="get">
+            <input type="text" name="zoek" class="zoekbalk" placeholder="Zoek naar een gerecht" value="">
+            <button type="submit" class="zoek-knop">Zoeken</button>
+        </form>
 
-    require_once 'connect.php';
+        <?php
+        $zoekterm = isset($_GET['zoek']) ? $_GET['zoek'] : '';
+        $categories = [
+            1 => "Maki rolls (6 stuks)",
+            2 => "Uramaki (inside-out roll, 8 stuks)",
+            3 => "Nigiri (per stuk)",
+            4 => "Bijgerechten",
+            5 => "Hoofdgerchten"
+        ];
 
-    $db = new db();
+        foreach ($categories as $group => $title) {
+            echo "<div class='menu-box'>";
+            echo "<h2>$title</h2>";
 
-    $sql = "SELECT * FROM `Menukaart`;";
-    $result = $db->get_connection()->query($sql);
+            $sql = "SELECT * FROM `Menukaart` WHERE groep = :group AND (naam LIKE :zoekterm OR omschrijving LIKE :zoekterm)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(['group' => $group, 'zoekterm' => '%' . $zoekterm . '%']);
+            $results = $stmt->fetchAll();
 
-    foreach ($result as $row) {
+            if ($results) {
+                foreach ($results as $row) {
+                    echo "<p class='menu-item'>{$row['naam']}, {$row['omschrijving']} - €{$row['prijs']}</p>";
+                }
+            } else {
+                echo "<p>Geen resultaten gevonden.</p>";
+            }
+            echo "</div>";
+        }
+        ?>
 
-
-        $template = '
-                        <p class="menu-item">%s - %s, %s - €%s</p>
-                    ';
-
-        echo sprintf($template, $row["id"], $row["naam"], $row["omschrijving"], $row["prijs"]);
-    }
-    ?>
+    </div>
 </main>
 <script src="js/script.js"></script>
 </body>
