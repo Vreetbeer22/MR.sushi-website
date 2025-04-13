@@ -288,7 +288,7 @@ textarea {
 
 .zoek-knop {
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #1D1919;
     color: white;
     border: none;
     border-radius: 5px;
@@ -296,6 +296,6 @@ textarea {
 }
 
 .zoek-knop:hover {
-    background-color: #45a049;
+    background-color: #2C2C2C;
 }
 /**/

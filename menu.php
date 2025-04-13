@@ -2,7 +2,7 @@
 session_start();
 include("connect.php");
 
-$is_ingelogd = $_SESSION["ingelogt"] ?? false;
+$is_ingelogd = $_SESSION["ingelogt"] ?? false;  //wordt gebruikt om te kijken of gebruiker wel/niet is ingelogt
 
 $db = new db();
 $pdo = $db->get_connection();
@@ -49,7 +49,7 @@ $pdo = $db->get_connection();
 </nav>
 <main>
     <div class="login-balk">
-        <?php if ($is_ingelogd) { ?>
+        <?php if ($is_ingelogd) { ?> <!-- Als er is ingelogt -->
             <div class="naast">
                 <a href="loguit.php">
                     <div class="login-knop">
@@ -62,7 +62,7 @@ $pdo = $db->get_connection();
                     </div>
                 </a>
             </div>
-        <?php } else { ?>
+        <?php } else { ?>   <!-- Als er niet is ingelogt -->
             <div class="login-knop" id="openModal">
                 <h3>Inloggen</h3>
             </div>
@@ -83,29 +83,31 @@ $pdo = $db->get_connection();
             </div>
         <?php } ?>
     </div>
-    <div class="hele-kaart">
+    <div class="hele-kaart">    <!-- menukaart -->
         <div class="tekst-center">
             <h1>Menu</h1>
         </div>
-        <form method="get">
+        <form method="get">     <!-- zoekbalk -->
             <input type="text" name="zoek" class="zoekbalk" placeholder="Zoek naar een gerecht" value="">
             <button type="submit" class="zoek-knop">Zoeken</button>
         </form>
 
         <?php
         $zoekterm = isset($_GET['zoek']) ? $_GET['zoek'] : '';
-        $categories = [
+        $categories = [ //maakt de catogorien aan
             1 => "Maki rolls (6 stuks)",
             2 => "Uramaki (inside-out roll, 8 stuks)",
             3 => "Nigiri (per stuk)",
             4 => "Bijgerechten",
-            5 => "Hoofdgerchten"
+            5 => "Hoofdgerchten",
+            6 => "Dranken"
         ];
 
-        foreach ($categories as $group => $title) {
+        foreach ($categories as $group => $title) { //laat de catogorien zien
             echo "<div class='menu-box'>";
             echo "<h2>$title</h2>";
 
+            //Laat de gezochten voorwerpen zien als ze er zijn
             $sql = "SELECT * FROM `Menukaart` WHERE groep = :group AND (naam LIKE :zoekterm OR omschrijving LIKE :zoekterm)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute(['group' => $group, 'zoekterm' => '%' . $zoekterm . '%']);

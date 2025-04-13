@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION['ingelogt']) || $_SESSION['ingelogt'] !== true) {
     header("Location: login.php");
     exit();
-}
+}   //kijkt of je bent ingelogt om te kijken of je wel of niet op de admin pagina kan
 ?>
 <?php
 include "connect.php";
@@ -19,17 +19,16 @@ if (isset($_POST['toevoegen'])) {
     $prijs = $_POST['prijs'];
     $groep = $_POST['groep'];
 
-    try{
+    try {
         $stmt = $pdo->prepare("INSERT INTO Menukaart (id, naam, omschrijving, prijs, groep) VALUES (?, ?, ?, ?, ?)");
         $stmt->execute([$id, $naam, $omschrijving, $prijs, $groep]);
         $melding = "item succesvol toegevoegd";
-    }
-    catch(PDOException $e) {
+    } catch (PDOException $e) {
         if ($e->getCode() == 23000) {
             $melding = "Er bestaat al een item met ID $id.";
         }
     }
-    
+
 }
 
 //aanpassen
@@ -127,7 +126,7 @@ if (isset($_POST["verwijderen"])) {
                     </form>
                 </div>
                 <div class="form-blok">
-                <h2>Items aanpassen</h2>
+                    <h2>Items aanpassen</h2>
                     <form method="post">
                         ID: <input type="number" name="id" class="invulbalk" required><br>
                         Naam: <input type="text" name="naam" class="invulbalk" required><br>
@@ -138,7 +137,7 @@ if (isset($_POST["verwijderen"])) {
                     </form>
                 </div>
                 <div class="form-blok">
-                <h2>Items aanpassen</h2>
+                    <h2>Items aanpassen</h2>
                     <form method="post">
                         ID: <input type="number" name="id" class="invulbalk"><br>
                         Naam: <input type="text" name="naam" class="invulbalk"><br>
@@ -170,4 +169,5 @@ if (isset($_POST["verwijderen"])) {
     </main>
 </body>
 <script src="js/auto.js"></script>
+
 </html>

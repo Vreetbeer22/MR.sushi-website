@@ -1,30 +1,22 @@
 <?php
- 
-class db {
+class db
+{
     private $pdo;
- 
-    public function __construct() {
-       
+
+    public function __construct()
+    {
+
         $host = "db";
         $db = "mydatabase";
         $user = "user";
         $password = "password";
- 
-        $this->pdo = new PDO("mysql:host=$host;dbname=$db", $user, $password);
+
+        $this->pdo = new PDO("mysql:host=$host;dbname=$db", $user, $password);  //hier wordt de verbinding gemaakt 
     }
-   
-    public function get_connection(): PDO {
-        return $this->pdo;
-    }
- 
-    public function get_last_id(string $table): int {
-       
-        $sql = "SELECT * FROM $table ORDER BY id DESC LIMIT 1";
-        $result = $this->pdo->query($sql);
-        $row = $result->fetch();
-        if ($row === null) return 0;
-        return $row["id"] + 1;
+
+    public function get_connection(): PDO
+    {
+        return $this->pdo;  //geeft de verbinding terug
     }
 }
 ?>
-
