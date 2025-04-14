@@ -137,7 +137,7 @@ if (isset($_POST["verwijderen"])) {
                     </form>
                 </div>
                 <div class="form-blok">
-                    <h2>Items aanpassen</h2>
+                    <h2>Items Verwijderen</h2>
                     <form method="post">
                         ID: <input type="number" name="id" class="invulbalk"><br>
                         Naam: <input type="text" name="naam" class="invulbalk"><br>
